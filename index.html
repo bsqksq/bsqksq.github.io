@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+	<style>
+		.not-visible-start{
+			display: none;
+		}
+
+		.not{
+		display: none;
+	}
+	</style>
+</head>
+<body>
+	<div class="container">
+		
+			<h3 class="text-center mt-4">Balın hesablanması</h3>	
+		
+		<form action="" class="form">
+			<label for="k1">KSQ 1</label>
+			<input id="k1" type="text" class="form-control k1">
+			<hr>
+			<label for="k2">KSQ 2</label>
+
+			<input  id="k2" type="text" class="form-control k2">
+			<hr>
+			<label for="k3">KSQ 3</label>
+
+			<input  id="k3" type="text" class="form-control k3">
+			<hr>
+			<label for="b1">BSQ</label>
+
+			<input  id="b1" type="text" class="form-control b1">
+			<hr>
+			<input type="submit" value="Hesabla" class="btn btn-outline-primary">
+		</form>
+
+		<h3 class="mt-4 not-visible-start">Yekun bal: <span class="result text-warning"></span>, yekun qiymət: <span class="qiymet text-info"></span></h3>
+		<h3 class="mt-4 not text-danger">Xanalar düzgün doldurulmayıb!</h3>
+		</div>
+	<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+
+  <script>
+
+  	$('.form').on('submit',function(e){
+  		e.preventDefault();
+  		$('.not-visible-start').css('display', 'none');
+  		$('.not').css('display', 'none');
+
+  		k_sum = parseInt($('.k1').val()) + parseInt($('.k2').val()) + parseInt($('.k3').val());
+  		result = k_sum / 3 * 0.4;
+  		b_sum = parseInt($('.b1').val());
+  		b_result = b_sum * 0.6;
+
+  		yekun = result + b_result;
+  		yekun = Math.round( yekun * 10 ) / 10;
+
+
+  		if(yekun > 0 && yekun < 30.5){
+  			qiymet = 2;
+  		} else if (yekun >= 30.5 && yekun < 60.5) {
+  			qiymet = 3;
+  		} else if (yekun >= 60.5 && yekun < 80.5){
+  			qiymet = 4;
+  		} else if (yekun >= 80.5 && yekun <= 100){
+  			qiymet = 5;
+  		} else {
+  			$('.not').css('display', 'block');
+  			return 0;
+  		}
+
+
+
+  		$('.result').html(yekun);
+  		$('.qiymet').html(qiymet);
+
+  		$('.not-visible-start').css('display', 'block');
+  	});
+  </script>
+</body>
+</html>
