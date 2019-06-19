@@ -31,6 +31,11 @@
 			<label for="k3">KSQ 3</label>
 
 			<input  id="k3" type="text" class="form-control k3">
+			
+			<hr>
+			<label for="k4">KSQ 4</label>
+
+			<input  id="k4" type="text" class="form-control k4">
 			<hr>
 			<label for="b1">BSQ</label>
 
@@ -54,8 +59,8 @@
   		$('.not-visible-start').css('display', 'none');
   		$('.not').css('display', 'none');
 
-  		k_sum = parseInt($('.k1').val()) + parseInt($('.k2').val()) + parseInt($('.k3').val());
-  		result = k_sum / 3 * 0.4;
+  		k_sum = parseInt($('.k1').val()) + parseInt($('.k2').val()) + parseInt($('.k3').val()) + parseInt($('.k4').val());
+  		result = k_sum / 4 * 0.4;
   		b_sum = parseInt($('.b1').val());
   		b_result = b_sum * 0.6;
 
